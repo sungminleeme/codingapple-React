@@ -53,6 +53,7 @@ function App() {
         )
         })
      }
+    
       {/* 인풋에 입력된 데이터를 저장해야됨 */}
      <div className="publish">
        <input onChange={(e) => {입력값변경(e.target.value)}}/>
@@ -62,7 +63,7 @@ function App() {
          글제목변경(arrayCopy);
         }}>저장</button>
      </div>
-
+     <Profile/>
 
       <button onClick={ ()=>{modal변경(!modal)}}>열고닫기</button>
         
@@ -90,11 +91,20 @@ function App() {
   class Profile extends React.Component {
     constructor() {
       super();
+      this.state = { name: 'Kim', age: 30}
+    }
+
+    changeName = () => {
+      this.setState ({name:'Park'} )
     }
 
     render(){
       return (
-        <div>프로필입니다</div>
+        <div>
+          <h3>프로필입니다</h3>
+          <p>저는 { this.state.name} 입니다.</p>
+          <button onClick={ this.changeName}>버튼</button>
+        </div>
       )
     }
   }
